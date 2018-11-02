@@ -4,15 +4,11 @@ var util = require('util');
 var router = express.Router();
 var indexController = require('../controllers/index.controller');
 
-router.get('/', function(req, res) {
-    res.render("index", { title: "Express" });
-});
+// basic routes
+router.get('/', indexController.getIndex);
+router.get('/time', indexController.getTime);
 
-router.get('/time', function(req, res) {
-    var now = new Date();
-    res.send('Sono le ore: ' + now.toLocaleTimeString());
-});
-
+// form routes
 router.post('/send', function(req, res) {
     res.send("Ciao " + req.body.name_field + "!");
 });
